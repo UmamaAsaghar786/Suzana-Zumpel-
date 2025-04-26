@@ -1,0 +1,186 @@
+                                /* Set the full page background color & css boiolerplate */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    height: 100vh;
+    width: 100vw;
+}
+                                         /* Outer container to center the box */ 
+.outer-bg{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #A4838F;
+}
+                                               /* The centered box model */
+.centre-box{
+    height:75vh ;
+    width:75vw ;
+    background-color: #D0B1BA;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+.part1{
+    height: 100vh;
+    width: 20vw ;
+}
+.part2{
+    height: 100vh;
+    width: 60vw ;
+    background-image: url(https://images.unsplash.com/photo-1709318305042-16d0b74554d1?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-size: cover;
+    background-position: center;
+}
+.part3{
+    height: 100vh;
+    width: 7%;
+    overflow: hidden;
+}
+ /* Main vertical stack for 4 lines of text */
+.text-container{
+    position: absolute;
+    flex-direction: column;    /* Stack lines vertically */
+    left: 17vw;
+    top: 45vh;
+}
+ /* Wrapper around each line (text + bar) */
+ .line-wrap{
+    position: relative;   /* So bar can be absolutely positioned inside */
+    overflow: hidden;      /* Hide overflow during animation */
+ }
+.text span{
+    font-size: 4rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900;
+    line-height: 50px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: white;
+    display: inline-block;           /* Required for animation */
+    transform: translateX(0);        /* Start at original position */
+    opacity: 1;                      /* Fully visible */
+    animation: hideText 6s infinite;     /* Animate each letter infinitely */
+} 
+
+/* Delay each letter slightly to create a wave effect */
+.text span:nth-child(1){ animation-delay: 3.0s;}
+.text span:nth-child(2){ animation-delay: 3.1s;}
+.text span:nth-child(3){ animation-delay: 3.2s;}
+.text span:nth-child(4){ animation-delay: 3.3s;}
+.text span:nth-child(5){ animation-delay: 3.4s;}
+.text span:nth-child(6){ animation-delay: 3.5s;}
+.text span:nth-child(7){ animation-delay: 3.6s;}
+.text span:nth-child(8){ animation-delay: 3.7s;}
+
+ /* White sliding bar */
+.bar{
+    position: absolute; /* Positioned relative to .line-wrap */
+    background-color: white;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 1;  /* Sit above text initially */
+    animation: barSlide 6s infinite;  /* Slide in/out repeatedly */
+}
+
+/* Each bar is a different width to match line length */
+.line-wrap:nth-child(1) .bar{ width: 19vw;}
+.line-wrap:nth-child(2) .bar{width: 16.5vw;}
+.line-wrap:nth-child(3) .bar{width: 9vw;}
+.line-wrap:nth-child(4) .bar{width: 23vw;}
+
+/* Bar animation: slide in from left, pause, then slide out */
+@keyframes barSlide{
+    0%{transform: translateX(-100%);}
+    10%, 40%{transform: translateX(0%);}
+    50%, 100%{transform: translateX(-100%);}
+}
+
+/* Text animation: fade and move left briefly, then reset */
+@keyframes hideText{
+    0%, 40%{
+        transform: translateX(0);
+        opacity: 1;
+    }
+    50%{
+        transform: translateX(-10px);       /* Move text slightly left */
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(0);             /* Reset position */
+        opacity: 1;
+    }
+}
+
+.small-img{
+    height: 300px;
+    width: 250px;
+    background-image: url(https://images.unsplash.com/photo-1741648711665-e1a8003b7891?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-size: cover;
+    position: absolute;
+    top: 30%;
+    left: 70%;
+}
+.vertical-text{
+    position: absolute;
+    writing-mode: vertical-rl;
+    white-space: nowrap;
+    left: 71vw;
+    z-index: 1;
+    animation: scrollvertical 6s linear infinite;
+}
+
+@keyframes scrollvertical{
+    0%{top: 100%;}
+    100%{top: -100%;}
+}
+
+
+.vertical-text h1{
+    font-family:sans-serif ;
+    font-size: 42px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: transparent;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: white;
+    text-transform:uppercase ;
+    /* text-align: center; */
+}
+.circular-text-container {
+    position: absolute;
+    top: 20%;
+    left: 0;
+    transform: translateY(-50%);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  text {
+    font-size: 12px;
+    fill: white;
+    letter-spacing: 2px;
+  }
+  .circular-text-container svg {
+    animation: spin 10s linear infinite;
+  }
+  .menu-icon {
+    position: absolute;
+    top: 50%;              /* Vertically center */
+    left: 50%;             /* Horizontally center */
+    transform: translate(-50%, -50%); /* Perfect center using translation */
+    font-size: 20px;
+    color: white;
+  }
+  
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+  
+
